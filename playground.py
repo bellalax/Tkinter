@@ -22,8 +22,11 @@ def addtoList2(event):
         findsize()
     entry1.delete(0,END) #deletes text after you push enter
 
-
 def clearList(event):
+    listbox1.delete(0, END)
+    findsize()
+    
+def clearList2():
     listbox1.delete(0, END)
     findsize()
 
@@ -38,16 +41,22 @@ def findsize():
     label1.config(text=listbox1.size())
     
 def openfileR():
-    print "Open File R"
+    clearList2()
+    f=open("ReadMe.txt", 'r')
+    for line in f:
+        name=line[0:-1]
+        listbox1.insert(END, name)
+    
+    f.close()
+    findsize()
 
 def openfileW():
     f = open("ReadMe.txt", 'w')
     names = listbox1.get(0, END)
-    f.write(names)
-    
-    
+    for i in names:
+        f.write(i+"\n")
+               
     f.close()
-
 
 
 
@@ -71,13 +80,16 @@ entry1.bind("<Return>", addtoList2)
 label1 = Label(root, text="Hello World", bg="lavender", anchor=W)
 label1.grid(row=0, column=0, sticky=EW, columnspan=2)
 
-listbox1 = Listbox(root)
+scrollbar = Scrollbar(root, orient=VERTICAL)
+listbox1 = Listbox(root, yscrollbarcommand=scrollbar.set)
+listbox1.config(command=listbox1.yview)
+scrollbar.grid(row=2, culumn=2, rowspan=10))
 listbox1.grid(row=3, column=0, columnspan=2, sticky=EW, rowspan = 10)
 listbox1.bind("<Button-3>", clearList)
 
-listbox1.insert(END, "Bob")
-listbox1.insert(END, "John")
-listbox1.insert(END, "Mary")
+#listbox1.insert(END, "Bob")
+#listbox1.insert(END, "John")
+#listbox1.insert(END, "Mary")
 
 label1.config(text= listbox1.size())
 
