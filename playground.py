@@ -60,13 +60,20 @@ def openfileW():
     f.close()
 
 
-
+#Date and Time
 d=datetime.now()
-print d
+#print d
 y=d.year
-print y
+#print y
 h=d.hour
-print h
+#print h
+
+def generate():
+    while(1):
+        print "Hello"
+        
+thread1=Thread(target=generate)
+#thread1.start()
 
 
 
