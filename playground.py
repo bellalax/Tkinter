@@ -1,6 +1,7 @@
 from Tkinter import * #gives us access to everything in the Tkinter class
 import tkMessageBox
 from PIL import Image, ImageTk
+from datetime import datetime
 
 
 def buttonpress1():
@@ -60,6 +61,14 @@ def openfileW():
 
 
 
+d=datetime.now()
+print d
+y=d.year
+print y
+h=d.hour
+print h
+
+
 
 root = Tk() #gives us a blank canvas object to work with
 root.title("My first GUI program with Tkinter")
@@ -78,12 +87,12 @@ entry1.grid(row=1,column=0)
 entry1.bind("<Return>", addtoList2)
 
 label1 = Label(root, text="Hello World", bg="lavender", anchor=W)
-label1.grid(row=0, column=0, sticky=EW, columnspan=2)
+label1.grid(row=0, column=0, sticky=EW, columnspan=3)
 
 scrollbar = Scrollbar(root, orient=VERTICAL)
-listbox1 = Listbox(root, yscrollbarcommand=scrollbar.set)
-listbox1.config(command=listbox1.yview)
-scrollbar.grid(row=2, culumn=2, rowspan=10))
+listbox1 = Listbox(root, yscrollcommand=scrollbar.set)
+scrollbar.config(command=listbox1.yview)
+scrollbar.grid(row=3, column=2, rowspan=10, sticky=NS)
 listbox1.grid(row=3, column=0, columnspan=2, sticky=EW, rowspan = 10)
 listbox1.bind("<Button-3>", clearList)
 
