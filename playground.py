@@ -68,11 +68,11 @@ y=d.year
 h=d.hour
 #print h
 
-def generate():
-    while(1):
-        print "Hello"
+#def generate():
+    #while(1):
+        #print "Hello"
         
-thread1=Thread(target=generate)
+#thread1=Thread(target=generate)
 #thread1.start()
 
 
